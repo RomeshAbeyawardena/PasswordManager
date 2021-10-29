@@ -1,6 +1,7 @@
 ﻿using DNI.Web.Shared.Base;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using PasswordManager.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace PasswordManager.Client.Core
     {
         public override OkObjectResult Ok([ActionResultObjectValue] object value)
         {
-            Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:8080");
+            Response.Headers.Add("Access-Control-Allow-Origin", Constants.ClientUrl);
             Response.Headers.Add("Access-Control-Request-Method", "GET, POST");
             Response.Headers.Add("Access-Control-Request-Headers", "*");
             return base.Ok(value);

@@ -23,32 +23,7 @@ namespace PasswordManager.Client
                     .AddAssembly(Core.This.Assembly))
                 .ConfigureWebModule<ClientModule>(builder => builder
                     .AddAssembly(Core.This.Assembly)
-                    .ConfigureServices(ConfigureServices)
-                    .ConfigureApplicationBuilder(configureApplicationBuilder)
                     .ConfigureWebHost(ConfigureWebHost));
-        }
-
-        private void configureApplicationBuilder(IApplicationBuilder applicationBuilder)
-        {
-            applicationBuilder.UseCors(ConfigurePolicy);
-        }
-
-        private void ConfigurePolicy(CorsPolicyBuilder corsPolicyBuilder)
-        {
-            corsPolicyBuilder
-                .WithOrigins("http://localhost")
-                .WithMethods("GET", "POST", "OPTIONS")
-                .AllowAnyHeader();
-        }
-
-        private void ConfigureServices(IServiceCollection services)
-        {
-            services.AddCors(Configure);
-        }
-
-        private void Configure(CorsOptions options)
-        {
-            options.AddDefaultPolicy(ConfigurePolicy);
         }
 
         private void ConfigureWebHost(IWebHostBuilder webHostBuilder)

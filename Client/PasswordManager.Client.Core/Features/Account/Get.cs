@@ -47,6 +47,12 @@ namespace PasswordManager.Client.Core.Features.Account
                     Name = "Halifax Bank",
                     Description = "Internet banking",
                     LastUpdated = new DateTime(2021, 02, 01, 15, 30, 0)
+                },
+                new SimpleTile {
+                    Id = NewGuid,
+                    Name = "RBS Bank",
+                    Description = "Internet banking",
+                    LastUpdated = new DateTime(2021, 02, 01, 15, 30, 0)
                 }
             };
         }
