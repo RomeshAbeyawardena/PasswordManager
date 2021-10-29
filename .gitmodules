@@ -1,0 +1,3 @@
+[submodule "Client/PasswordManager.Client/app"]
+	path = Client/PasswordManager.Client/app
+	url = D:\\dev\\source\\PasswordManager\\Client\\PasswordManager.Client\\app
