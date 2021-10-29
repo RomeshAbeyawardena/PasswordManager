@@ -9,10 +9,11 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using DNI.Mapper.Extensions;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace PasswordManager.Client.Core.Features.Account
 {
-    public class AccountController : ApiControllerBase
+    public class AccountController : ClientApiControllerBase
     {
         public Task<IActionResult> GetAccount([FromQuery] string payload, CancellationToken cancellationToken)
         {

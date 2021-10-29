@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace PasswordManager.Client.Core.Features.Tile
 {
-    public class TileController : ApiControllerBase
+    public class TileController : ClientApiControllerBase
     {
         public Task<IActionResult> GetTile([FromQuery] string payload, CancellationToken cancellationToken)
         {

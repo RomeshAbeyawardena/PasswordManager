@@ -30,14 +30,14 @@ namespace PasswordManager.Client
 
         private void configureApplicationBuilder(IApplicationBuilder applicationBuilder)
         {
-            applicationBuilder.UseCors();
+            applicationBuilder.UseCors(ConfigurePolicy);
         }
 
         private void ConfigurePolicy(CorsPolicyBuilder corsPolicyBuilder)
         {
             corsPolicyBuilder
                 .WithOrigins("http://localhost")
-                .WithMethods("GET", "POST")
+                .WithMethods("GET", "POST", "OPTIONS")
                 .AllowAnyHeader();
         }
 
