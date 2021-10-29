@@ -10,7 +10,9 @@ namespace PasswordManager.Shared.Models
     public class AccountCredential
     {
         public Guid Id { get; set; }
+        public string Description { get; set; }
         public CredentialType Type { get; set; }
-        public IEnumerable<string> Value { get; set; }
+        public string CredentialType => Enum.GetName(typeof(CredentialType), Type);
+        public IEnumerable<char> Value { get; set; }
     }
 }

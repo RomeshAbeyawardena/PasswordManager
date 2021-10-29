@@ -8,7 +8,8 @@ namespace PasswordManager.Shared.Enumerations
 {
     public enum CredentialType
     {
+        MemorialWord,
         Password,
-        MemorialWord
+        PinCode
     }
 }

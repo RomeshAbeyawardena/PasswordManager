@@ -14,7 +14,31 @@ namespace PasswordManager.Client.Core.Features.Tile
 {
     public class Get : IRequestHandler<GetTileQuery, IResponse<Shared.Models.Tile>>
     {
-        
+        private IEnumerable<AccountCredential> AccountCredentials => new []{
+            new AccountCredential
+            {
+                Id = Guid.NewGuid(),
+                Description = "Password",
+                Type = Shared.Enumerations.CredentialType.Password,
+                Value = "Password12345".ToCharArray()
+            },
+            new AccountCredential
+            {
+                Id = Guid.NewGuid(),
+                Description = "Passphrase",
+                Type = Shared.Enumerations.CredentialType.MemorialWord,
+                Value = "Password12345".ToCharArray()
+            },
+            new AccountCredential
+            {
+                Id = Guid.NewGuid(),
+                Description = "PIN Code",
+                Type = Shared.Enumerations.CredentialType.PinCode,
+                Value = "6958439".ToCharArray()
+            }
+        };
+
+
         private IEnumerable<Shared.Models.Tile> GetData()
         {
             return new[] {  new Shared.Models.Tile {
@@ -22,7 +46,7 @@ namespace PasswordManager.Client.Core.Features.Tile
                     Name = "Romesh E-mail",
                     Description = "romesh.abeyawardena@dotnetinsights.net",
                     LastUpdated = new DateTime(2021, 02, 01, 15, 30, 0),
-                    Credentials = Array.Empty<AccountCredential>()
+                    Credentials = AccountCredentials
                 },
                 new Shared.Models.Tile {
                     Id = new Guid("c4e9e064a6434f35a048b35bb2be826f"),
