@@ -9,6 +9,6 @@ namespace PasswordManager.Shared.Queries.Account
 {
     public class GetAccountQuery : IRequest<Models.Account>
     {
-        public int AccountId { get; set; }
+        public Guid AccountId { get; set; }
     }
 }
