@@ -19,12 +19,14 @@ namespace PasswordManager.Client.Core.Features.Tile
 
             var payloadItems = payload.Split("|", StringSplitOptions.RemoveEmptyEntries);
 
-            if (Guid.TryParse(payloadItems[0], out var accountId))
+
+
+            if (Guid.TryParse(encoding.GetString(Convert.FromBase64String(payloadItems[0])), out var accountId))
             {
                 AccountId = accountId;
             }
 
-            if (Guid.TryParse(payloadItems[0], out var tileId))
+            if (Guid.TryParse(encoding.GetString(Convert.FromBase64String(payloadItems[1])), out var tileId))
             {
                 TileId = tileId;
             }

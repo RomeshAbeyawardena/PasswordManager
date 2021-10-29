@@ -18,38 +18,37 @@ namespace PasswordManager.Client.Core.Features.Account
         {
             return Task.FromResult(Response.Success(new Shared.Models.Account { 
                 EmailAddress = "romesh.abeyawardena@dotnetinsights.net",
-                Id = NewGuid,
+                Id = new Guid("6c3a79b09e41413eb0c50ff82cafbe68"),
                 Tiles = GetTiles(),
                 UserName = "romesh.a"
             }));
         }
 
-        private Guid NewGuid => Guid.NewGuid();
 
         private IEnumerable<SimpleTile> GetTiles()
         {
             return new[]
             {
-                new SimpleTile { 
-                    Id = NewGuid,
+                new SimpleTile {
+                    Id = new Guid("e7015b40c2c04242a511cd0e0c799940"),
                     Name = "Romesh E-mail",
                     Description = "romesh.abeyawardena@dotnetinsights.net",
                     LastUpdated = new DateTime(2021, 02, 01, 15, 30, 0)
                 },
                 new SimpleTile {
-                    Id = NewGuid,
+                    Id = new Guid("c4e9e064a6434f35a048b35bb2be826f"),
                     Name = "Krish E-mail",
                     Description = "krish.ellis@dotnetinsights.net",
                     LastUpdated = new DateTime(2021, 02, 01, 15, 30, 0)
                 },
                 new SimpleTile {
-                    Id = NewGuid,
+                    Id = new Guid("ddd122c6379840da848e75231f440712"),
                     Name = "Halifax Bank",
                     Description = "Internet banking",
                     LastUpdated = new DateTime(2021, 02, 01, 15, 30, 0)
                 },
                 new SimpleTile {
-                    Id = NewGuid,
+                    Id = new Guid("8ef0bad7b4ad48ad96df05f0d60f2ff7"),
                     Name = "RBS Bank",
                     Description = "Internet banking",
                     LastUpdated = new DateTime(2021, 02, 01, 15, 30, 0)
