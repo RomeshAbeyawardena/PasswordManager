@@ -9,6 +9,7 @@ namespace PasswordManager.Shared.Queries.Tiles
 {
     public class GetTileQuery : IRequest<Models.Tile>
     {
-        
+        public Guid AccountId { get; set; }
+        public Guid TileId { get; set; }
     }
 }
