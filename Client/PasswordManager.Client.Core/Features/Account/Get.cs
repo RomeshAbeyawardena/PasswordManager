@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace PasswordManager.Client.Core.Features.Account
 {
-    public class GetAccountRequestHandler : IRequestHandler<GetAccountQuery, IResponse<Shared.Models.Account>>
+    public class Get : IRequestHandler<GetAccountQuery, IResponse<Shared.Models.Account>>
     {
         public Task<IResponse<Shared.Models.Account>> Handle(GetAccountQuery request, CancellationToken cancellationToken)
         {

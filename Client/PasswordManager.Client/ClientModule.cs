@@ -16,17 +16,18 @@ namespace PasswordManager.Client
         {
             moduleConfigurationBuilder
                 .ConfigureMapperModule(builder => builder
-                    .AddAssembly<AccountController>())
+                    .AddAssembly(Core.This.Assembly))
                 .ConfigureMediatorModule(builder => builder
-                    .AddAssembly<AccountController>())
+                    .AddAssembly(Core.This.Assembly))
                 .ConfigureWebModule<ClientModule>(builder => builder
-                    .AddAssembly<AccountController>()
+                    .AddAssembly(Core.This.Assembly)
                     .ConfigureWebHost(ConfigureWebHost));
         }
 
         private void ConfigureWebHost(IWebHostBuilder webHostBuilder)
         {
-            webHostBuilder.PreferHostingUrls(true)
+            webHostBuilder
+                .PreferHostingUrls(true)
                 .UseUrls("http://localhost:5500");
         }
     }
