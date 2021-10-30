@@ -1,4 +1,5 @@
-﻿using PasswordManager.Shared.Enumerations;
+﻿using DNI.Shared.Attributes;
+using PasswordManager.Shared.Enumerations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -18,6 +19,12 @@ namespace PasswordManager.Shared.Models.Db
         public string Value { get; set; }
 
         public Guid AccountId { get; set; }
+
+        [MetaProperty(DNI.Shared.Enumerations.MetaAction.Add)]
+        public DateTimeOffset Created { get; set; }
+
+        [MetaProperty(DNI.Shared.Enumerations.MetaAction.Update)]
+        public DateTimeOffset? Modified { get; set; }
 
         [NotMapped]
         public CredentialType? Type => (CredentialType)CredentialTypeId;
