@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Models = PasswordManager.Shared.Models.Db;
 
 namespace PasswordManager.Server.Core.Features.User
 {
@@ -19,13 +20,16 @@ namespace PasswordManager.Server.Core.Features.User
     {
         private readonly IMapper mapper;
         private readonly IMediator mediator;
+        private readonly IAsyncRepository<Models.User> userRepository;
 
         public Register(
             IMapper mapper,
-            IMediator mediator)
+            IMediator mediator,
+            IAsyncRepository<Models.User> userRepository)
         {
             this.mapper = mapper;
             this.mediator = mediator;
+            this.userRepository = userRepository;
         }
 
         public async Task<IResponse<Guid>> Handle(RegisterRequest request, CancellationToken cancellationToken)
@@ -39,12 +43,16 @@ namespace PasswordManager.Server.Core.Features.User
                 throw new ModelStateException(request, response.ValidationFailures);
             }
 
+            userSaveRequest.Customer = response.Result;
+
             var userResponse = await mediator.Send(userSaveRequest, cancellationToken);
 
             if (!userResponse.Succeeded)
             {
                 throw new ModelStateException(request, response.ValidationFailures);
             }
+
+            await userRepository.SaveChangesAsync(cancellationToken);
 
             return Response.Success(userResponse.Result.Id);
         }

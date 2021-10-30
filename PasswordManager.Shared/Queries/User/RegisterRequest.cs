@@ -21,6 +21,6 @@ namespace PasswordManager.Shared.Queries.User
 
         public string EmailAddress { get; set; }
 
-        public string PasswordHash { get; set; }
+        public string Password { get; set; }
     }
 }
