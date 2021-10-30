@@ -20,9 +20,6 @@ namespace PasswordManager.Shared.Models.Db
         [EncryptionProfile(Constants.EncryptionProfiles.Personal)]
         public string Description { get; set; }
 
-        [MetaProperty(DNI.Shared.Enumerations.MetaAction.Add | DNI.Shared.Enumerations.MetaAction.Update)]
-        public DateTime? LastUpdated { get; set; }
-        
         public Guid UserId { get; set; }
 
         [MetaProperty(DNI.Shared.Enumerations.MetaAction.Add)]

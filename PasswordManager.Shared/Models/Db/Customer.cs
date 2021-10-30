@@ -1,4 +1,5 @@
 ﻿using DNI.Encryption.Shared.Attributes;
+using DNI.Shared.Attributes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -22,5 +23,12 @@ namespace PasswordManager.Shared.Models.Db
         public string LastName { get; set; }
 
         public DateTime DateOfBirth { get; set; }
+
+        [MetaProperty(DNI.Shared.Enumerations.MetaAction.Add)]
+        public DateTimeOffset Created { get; set; }
+
+        [MetaProperty(DNI.Shared.Enumerations.MetaAction.Update)]
+        public DateTimeOffset? Modified { get; set; }
+
     }
 }

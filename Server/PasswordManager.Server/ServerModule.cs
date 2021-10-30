@@ -6,8 +6,7 @@ using DNI.Web.Modules.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using DNI.Modules.Extensions;
-using PasswordManager.Server.Core.Features.Account;
-using System;
+using DNI.Encryption.Modules.Extensions;
 
 namespace PasswordManager.Server
 {
@@ -17,12 +16,13 @@ namespace PasswordManager.Server
         {
             moduleConfigurationBuilder
                 .AddModule<DbModule>()
+                .ConfigureEncryptionModule(builder => builder.ImportConfiguration("SecurityProfiles/General"))
                 .ConfigureMapperModule(builder => builder
-                    .AddAssembly<AccountController>())
+                    .AddAssembly(Core.This.Assembly))
                 .ConfigureMediatorModule(builder => builder
-                    .AddAssembly<AccountController>())
+                    .AddAssembly(Core.This.Assembly))
                 .ConfigureWebModule<ServerModule>(builder => builder
-                    .AddAssembly<AccountController>()
+                    .AddAssembly(Core.This.Assembly)
                     .ConfigureWebHost(ConfigureWebHost));
         }
 

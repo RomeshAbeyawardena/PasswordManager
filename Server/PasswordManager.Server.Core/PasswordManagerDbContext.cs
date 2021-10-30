@@ -12,9 +12,9 @@ namespace PasswordManager.Core
             
         }
 
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Account> Accounts { get; set; }
-        public DbSet<Credential> Credentials { get; set; }
+        public DbSet<Customer> Customer { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<Account> Account { get; set; }
+        public DbSet<Credential> Credential { get; set; }
     }
 }

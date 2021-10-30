@@ -2,6 +2,7 @@
 using DNI.Modules.Shared.Abstractions.Builders;
 using DNI.Modules.Shared.Base;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PasswordManager.Core;
 using System;
@@ -19,9 +20,9 @@ namespace PasswordManager.Server
             moduleConfigurationBuilder.ConfigureDbContextModule(builder => builder.AddDbContext<PasswordManagerDbContext>(ConfigureDbContext, ServiceLifetime.Scoped));
         }
 
-        private void ConfigureDbContext(DbContextOptionsBuilder dbContextOptionsBuilder)
+        private void ConfigureDbContext(IServiceProvider serviceProvider, DbContextOptionsBuilder dbContextOptionsBuilder)
         {
-            throw new NotImplementedException();
+            dbContextOptionsBuilder.UseSqlServer(serviceProvider.GetRequiredService<IConfiguration>().GetConnectionString("default"));
         }
     }
 }

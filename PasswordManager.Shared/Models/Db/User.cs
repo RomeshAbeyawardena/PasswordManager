@@ -14,13 +14,16 @@ namespace PasswordManager.Shared.Models.Db
         [Key]
         public Guid Id { get; set; }
         [EncryptionProfile(Constants.EncryptionProfiles.Personal)]
+        
         public string UserName { get; set; }
+
         [EncryptionProfile(Constants.EncryptionProfiles.Personal)]
         public string EmailAddress { get; set; }
+        
         [EncryptionProfile(Constants.EncryptionProfiles.Personal, DNI.Encryption.Shared.Enumerations.EncryptionType.Hash)]
         public string PasswordHash { get; set; }
         
-        public int CustomerId { get; set; }
+        public Guid CustomerId { get; set; }
 
         [MetaProperty(DNI.Shared.Enumerations.MetaAction.Add)]
         public DateTimeOffset Created { get; set; }
