@@ -49,7 +49,7 @@ namespace PasswordManager.Server.Core.Features.User
 
             if (!userResponse.Succeeded)
             {
-                throw new ModelStateException(request, response.ValidationFailures);
+                throw new ModelStateException(request, userResponse.ValidationFailures);
             }
 
             await userRepository.SaveChangesAsync(cancellationToken);

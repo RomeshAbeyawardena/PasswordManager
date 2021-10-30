@@ -13,8 +13,8 @@ namespace PasswordManager.Shared.Models.Db
     {
         [Key]
         public Guid Id { get; set; }
+
         [EncryptionProfile(Constants.EncryptionProfiles.Personal)]
-        
         public string UserName { get; set; }
 
         [EncryptionProfile(Constants.EncryptionProfiles.Personal)]

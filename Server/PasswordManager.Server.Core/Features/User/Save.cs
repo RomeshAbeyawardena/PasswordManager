@@ -20,14 +20,18 @@ namespace PasswordManager.Server.Core.Features.User
 {
     public class Save : IRequestResponseHandler<SaveRequest, Models.User>
     {
+        private readonly IDictionary<string, IEncryptionOptions> encryptionOptions;
         private readonly IAsyncRepository<Models.User> userRepository;
         private readonly IModelEncryptor modelEncryptor;
         private readonly IMapper mapper;
 
-        public Save(IAsyncRepository<Models.User> userRepository,
+        public Save(
+           IDictionary<string, IEncryptionOptions> encryptionOptions,
+           IAsyncRepository<Models.User> userRepository,
            IModelEncryptor modelEncryptor,
            IMapper mapper)
         {
+            this.encryptionOptions = encryptionOptions;
             this.userRepository = userRepository;
             this.modelEncryptor = modelEncryptor;
             this.mapper = mapper;
@@ -44,7 +48,7 @@ namespace PasswordManager.Server.Core.Features.User
             {
                 if (query.Any(a => a.EmailAddress == encryptedUser.EmailAddress))
                 {
-                    validationFailures.Add(encryptedUser, "Email address already exists", "EmailAddress");
+                    validationFailures.Add(encryptedUser, "User with requested email address already exists", "EmailAddress");
                     return null;
                 }
 
