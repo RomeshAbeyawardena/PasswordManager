@@ -5,6 +5,7 @@ using DNI.Modules.Shared.Base;
 using DNI.Web.Modules.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using DNI.Modules.Extensions;
 using PasswordManager.Server.Core.Features.Account;
 using System;
 
@@ -15,6 +16,7 @@ namespace PasswordManager.Server
         public override void ConfigureModuleBuilder(IServiceCollection services, IModuleConfigurationBuilder moduleConfigurationBuilder)
         {
             moduleConfigurationBuilder
+                .AddModule<DbModule>()
                 .ConfigureMapperModule(builder => builder
                     .AddAssembly<AccountController>())
                 .ConfigureMediatorModule(builder => builder
