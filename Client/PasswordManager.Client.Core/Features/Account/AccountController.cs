@@ -23,5 +23,10 @@ namespace PasswordManager.Client.Core.Features.Account
 
             return this.Process(this.Send(query, cancellationToken));
         }
+
+        public Task<IActionResult> Authenticate([FromQuery] string payload, CancellationToken cancellationToken)
+        {
+
+        }
     }
 }
