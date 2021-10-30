@@ -14,9 +14,15 @@ namespace PasswordManager.Server.Core.Features.User
     public class UserController : ApiControllerBase
     {
         [HttpGet]
-        public Task<IActionResult> GetUser(GetUserQuery query, CancellationToken cancellationToken)
+        public Task<IActionResult> GetUser(GetQuery query, CancellationToken cancellationToken)
         {
             return this.Process(this.Send(query, cancellationToken));
+        }
+
+        [HttpPost]
+        public Task<IActionResult> RegisterUser(RegisterRequest request, CancellationToken cancellationToken)
+        {
+            return this.Process(this.Send(request, cancellationToken));
         }
     }
 }

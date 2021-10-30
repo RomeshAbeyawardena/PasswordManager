@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PasswordManager.Shared.Queries.User
 {
-    public class GetUserQuery : IRequest<Models.Db.User>
+    public class GetQuery : IRequest<Models.Db.User>
     {
         public Guid? Id { get; set; }
         public string EmailAddress { get; set; }

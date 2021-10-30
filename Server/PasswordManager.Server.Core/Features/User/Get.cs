@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 
 namespace PasswordManager.Server.Core.Features.User
 {
-    public class Get : IRequestResponseHandler<GetUserQuery, Models.User>
+    public class Get : IRequestResponseHandler<GetQuery, Models.User>
     {
         private readonly IModelEncryptor modelEncryptor;
         private readonly IAsyncRepository<Models.User> userRepository;
@@ -30,7 +30,7 @@ namespace PasswordManager.Server.Core.Features.User
             this.userRepository = userRepository;
         }
 
-        public Task<IResponse<Models.User>> Handle(GetUserQuery request, CancellationToken cancellationToken)
+        public Task<IResponse<Models.User>> Handle(GetQuery request, CancellationToken cancellationToken)
         {
             var query = userRepository.Query
                    .Include(user => user.Accounts)
