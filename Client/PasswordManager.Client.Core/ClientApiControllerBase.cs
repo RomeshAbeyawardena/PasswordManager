@@ -1,4 +1,5 @@
-﻿using DNI.Web.Shared.Base;
+﻿using DNI.Web.Shared.Attributes;
+using DNI.Web.Shared.Base;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using PasswordManager.Shared;
@@ -10,15 +11,12 @@ using System.Threading.Tasks;
 
 namespace PasswordManager.Client.Core
 {
+    [ClientController,
+     ClientControllerAllowedHeaders(ClientControllerAllowedHeadersAttribute.Any),
+     ClientControllerAllowedOrigins(Constants.ClientUrl),
+     ClientControllerAllowedMethods(ClientControllerAllowedMethodsAttribute.Any)]
     public abstract class ClientApiControllerBase : ApiControllerBase
     {
-        public override OkObjectResult Ok([ActionResultObjectValue] object value)
-        {
-            Response.Headers.Add("Access-Control-Allow-Origin", Constants.ClientUrl);
-            Response.Headers.Add("Access-Control-Request-Method", "GET, POST");
-            Response.Headers.Add("Access-Control-Request-Headers", "*");
-            return base.Ok(value);
-        }
-
+        
     }
 }
