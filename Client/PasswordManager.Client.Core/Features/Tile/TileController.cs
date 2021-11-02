@@ -16,9 +16,8 @@ namespace PasswordManager.Client.Core.Features.Tile
     {
         public Task<IActionResult> GetTile([FromQuery] string payload, CancellationToken cancellationToken)
         {
-            var tileViewModel = TileViewModel.FromPayload(payload, Encoding.UTF8);
+            var query = GetTileQuery.FromPayload(payload, Encoding.UTF8);
 
-            var query = this.Map<GetTileQuery>(tileViewModel);
             return this.Process(this.Send(query, cancellationToken));
         }
     }

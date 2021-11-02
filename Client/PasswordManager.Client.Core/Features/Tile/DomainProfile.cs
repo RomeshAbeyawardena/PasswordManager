@@ -12,7 +12,7 @@ namespace PasswordManager.Client.Core.Features.Tile
     {
         public DomainProfile()
         {
-            CreateMap<TileViewModel, GetTileQuery>();
+            
         }
     }
 }

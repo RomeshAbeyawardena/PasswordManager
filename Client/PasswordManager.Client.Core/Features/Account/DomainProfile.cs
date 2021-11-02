@@ -12,7 +12,7 @@ namespace PasswordManager.Client.Core.Features.Account
     {
         public DomainProfile()
         {
-            CreateMap<AccountViewModel, GetAccountQuery>();
+            
         }
     }
 }

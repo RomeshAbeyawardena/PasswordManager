@@ -10,23 +10,26 @@ using System.Threading;
 using System.Threading.Tasks;
 using DNI.Mapper.Extensions;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using PasswordManager.Shared.Queries.User;
 
 namespace PasswordManager.Client.Core.Features.Account
 {
     public class AccountController : ClientApiControllerBase
     {
+        [HttpGet]
         public Task<IActionResult> GetAccount([FromQuery] string payload, CancellationToken cancellationToken)
         {
-            var accountViewModel = AccountViewModel.FromPayload(payload, Encoding.UTF8);
-
-            var query = this.Map<GetAccountQuery>(accountViewModel);
+            var query = GetAccountQuery.FromPayload(payload, Encoding.UTF8);
 
             return this.Process(this.Send(query, cancellationToken));
         }
 
-        public Task<IActionResult> Authenticate([FromQuery] string payload, CancellationToken cancellationToken)
+        [HttpPost, Route("authenticate")]
+        public Task<IActionResult> Authenticate([FromForm] string payload, CancellationToken cancellationToken)
         {
+            var query = AuthenticateUserRequest.FromPayload(payload);
 
+            return this.Process(this.Send(query, cancellationToken));
         }
     }
 }
